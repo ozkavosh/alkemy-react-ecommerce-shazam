@@ -1,0 +1,35 @@
+@use "../../globals" as variables;
+
+.footer {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 250px;
+  padding: 2em 4em;
+  background-color: variables.$secondary-color;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4em;
+
+  h3 {
+    font-weight: normal;
+    color: variables.$main-color;
+    margin-bottom: 0.5em;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      color: white;
+    }
+  }
+
+  .networkList ul {
+    display: flex;
+    gap: 0.5em;
+
+    li {
+      font-size: 26px;
+    }
+  }
+}

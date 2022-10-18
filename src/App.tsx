@@ -1,10 +1,15 @@
-import './App.scss';
+import { BrowserRouter } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import MainNavigation from "./components/MainNavigation/MainNavigation";
 
 function App() {
   return (
-    <div className="app">
-      App
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <MainNavigation/>
+      <Footer/>
+    </BrowserRouter>
   );
 }
 

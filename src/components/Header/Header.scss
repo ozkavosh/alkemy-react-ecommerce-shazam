@@ -1,0 +1,94 @@
+@use '../../globals' as variables;
+
+.header{
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 4em;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+    background-color: variables.$secondary-color;
+    color: variables.$main-color;
+
+    .headerSearch{
+        position: relative;
+        flex-basis: 40%;
+        height: 35px;
+        
+        .searchInput{
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: 0 1em;
+            border-radius: 4px;
+            background-color: black;
+            color: variables.$main-color;
+            outline: none;
+            border:none;
+
+            &::placeholder{
+                color: variables.$main-color;
+                opacity: 0.5;
+            }
+        }
+
+        .searchInputButton{
+            position: absolute;
+            top: 30%;
+            right: 1em;
+            cursor: pointer;
+        }
+    }
+
+    .headerLogoImg{
+        flex-basis: 140px;
+        height: 45px;
+    }
+
+    .headerButtons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3em;
+
+        .headerAccount, .headerCartWidget{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5em;
+            cursor: pointer;
+    
+            & h4{
+                font-weight: 300;
+            }
+        }
+    }
+
+    .helperTab{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 35px;
+        background-color: lighten(variables.$secondary-color, 10%);
+        bottom: -35px;
+        left: 0;
+    
+        h3{
+            display: flex;
+            align-items: center;
+            padding: 0 2em;
+            border-top-right-radius: 3em;
+            border-top-left-radius: 3em;
+            background-color: variables.$main-color;
+            color: variables.$secondary-color;
+            text-transform: uppercase;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+}

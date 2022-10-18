@@ -8,4 +8,9 @@
   font-family: variables.$main-font;
 }
 
+main{
+  margin: 135px auto 0 auto;
+  min-height: calc(100vh - 135px - 250px);
+}
+
 
