@@ -1,0 +1,26 @@
+@use '../../globals' as variables;
+
+.productList{
+    background-color: lighten(variables.$secondary-color, 20%);
+
+    .container{
+        box-sizing: border-box;
+        width: 90%;
+        margin: 0 auto;
+        padding: 1em 0;
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+
+        .filters{
+            width: 23em;
+        }
+
+        .products{
+            width: calc((15em * 3) + 2em);
+            display: flex;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+    }
+}

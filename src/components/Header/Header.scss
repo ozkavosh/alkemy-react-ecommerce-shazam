@@ -84,6 +84,7 @@
     background-color: lighten(variables.$secondary-color, 10%);
     bottom: -35px;
     left: 0;
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.541);
 
     .btnCategories,
     .btnSupport {
