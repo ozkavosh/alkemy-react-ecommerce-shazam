@@ -4,13 +4,13 @@ import ProductCard from "../ProductCard/ProductCard";
 import getCategoryName from "../../utils/getCategoryName";
 
 const ProductList = () => {
-    const { category } = useParams();
+  const { category, brand } = useParams();
 
   return (
     <main className="productList">
       <div className="container">
         <div className="filters">
-          <h2>{category && getCategoryName(category)}</h2>
+          <h2>{category ? getCategoryName(category) : brand?.toUpperCase()}</h2>
 
           <div className="orderBy">
             <h3>Ordenar por</h3>

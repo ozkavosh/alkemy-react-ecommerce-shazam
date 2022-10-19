@@ -1,0 +1,149 @@
+@use '../../globals' as variables;
+
+.productDetail{
+    background-color: lighten(variables.$secondary-color, 20%);
+
+    .container{
+        box-sizing: border-box;
+        width: 80%;
+        padding: 2em 0;
+        margin: 0 auto;
+
+        .productDetailCard{
+            box-sizing: border-box;
+            width: 100%;
+            padding: 1em;
+            border: 2px solid lighten(variables.$secondary-color, 40%);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+
+            .firstRow{
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                padding-bottom: 2em;
+                border-bottom: 1px solid gray;
+
+                .firstColumn{
+                    width: 65%;
+
+                    .productSwiper{
+                        margin: 1em 0 0 0;
+                        height: 30em;
+                        width: 85%;
+                        background-color: lighten(variables.$secondary-color, 30%);
+                    }
+                }
+
+                .secondColumn{
+                    flex: 1;
+                    margin-left: auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5em;
+                    align-items: center;
+
+                    .productPriceContainer{
+                        text-align: center;
+                    }
+
+                    .productInfoContainer{
+                        box-sizing: border-box;
+                        display: flex;
+                        align-items: center;
+                        justify-content: baseline;
+                        gap: 1em;
+                        width: 100%;
+                        padding: .5em;
+                        border-bottom: 1px solid gray;
+                    }
+
+                    .productQuantity{
+                        margin: .5em 0;
+                        display: flex;
+                        gap: .1em;
+
+                        .btnAddQuantity, .btnRemoveQuantity{
+                            background-color: variables.$secondary-color;
+                            padding: .5em 1em;
+                            border: none;
+                            cursor: pointer;
+
+                            &:hover{
+                                background-color: lighten(variables.$secondary-color, 5%);
+                            }
+                        }
+
+                        .quantityDisplay{
+                            background-color: lighten(variables.$secondary-color, 5%);
+                            padding: .5em 2em;
+                            pointer-events: none;
+                        }
+
+                        .btnAddQuantity{
+                            border-top-left-radius: .5em;
+                            border-bottom-left-radius: .5em;
+                        }
+
+                        .btnRemoveQuantity{
+                            border-top-right-radius: .5em;
+                            border-bottom-right-radius: .5em;
+                        }
+                    }
+
+                    .btnAddToCart{
+                        padding: .5em;
+                        border: none;
+                        border-radius: .5em;
+                        outline: none;
+                        background-color: variables.$main-color;
+                        text-transform: uppercase;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .secondRow{
+                &>h3{
+                    margin: 1em 0;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                .productSpecs{
+                    box-sizing: border-box;
+                    padding: 0 2em;
+                    display: flex;
+                    justify-content: space-between;
+                    row-gap: 1em;
+                    flex-wrap: wrap;
+                    
+                    .specColumn{
+                        width: 22em;
+
+                        hr{
+                            border: none;
+                            border-top: 1px solid variables.$main-color;
+                            margin: .5em 0;
+                        }
+
+                        ul{
+                            list-style-type: none;
+                            display: flex;
+                            flex-direction: column;
+                            gap: .5em;
+
+                            li{
+                                display:flex;
+                                justify-content: space-between;
+                                width: 80%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
