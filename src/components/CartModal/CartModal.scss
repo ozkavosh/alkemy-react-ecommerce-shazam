@@ -1,0 +1,54 @@
+@use '../../globals' as variables;
+
+.cartModal{
+    box-sizing: border-box;
+    position: absolute;
+    top: calc(100% + 35px);
+    right: 0;
+    width: 20em;
+    background-color: variables.$secondary-color;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: -1;
+    animation: slide-in-right .3s linear;
+
+    a{
+        width: 100%;
+        button{
+            font-weight: bold;
+            width: 100%;
+            background-color: variables.$main-color;
+            text-transform: uppercase;
+            padding: .5em 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
+
+    &.hide{
+        animation: slide-out-right .3s linear;
+        right: -100%;
+    }
+}
+
+@keyframes slide-in-right {
+    0%{
+        right: -100%;
+    }
+    to{
+        right: 0;
+    }
+}
+
+@keyframes slide-out-right {
+    0%{
+        right: 0;
+    }
+    to{
+        right: -100%;
+    }
+}

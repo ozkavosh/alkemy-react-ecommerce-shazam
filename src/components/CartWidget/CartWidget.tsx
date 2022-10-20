@@ -1,9 +1,9 @@
 import "./CartWidget.scss";
 import { FaShoppingCart } from "react-icons/fa";
 
-const CartWidget = () => {
+const CartWidget = ({ onClick }: { onClick: () => void }) => {
   return (
-    <div className="headerCartWidget">
+    <div className="headerCartWidget" onClick={onClick}>
       <FaShoppingCart />
       <h4>Mi Carrito</h4>
 

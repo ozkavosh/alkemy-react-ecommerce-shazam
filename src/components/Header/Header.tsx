@@ -10,23 +10,38 @@ import { AiOutlineClose } from "react-icons/ai";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 import CategoriesMenu from "../CategoriesMenu/CategoriesMenu";
+import CartModal from "../CartModal/CartModal";
 
 const Header = () => {
-  const [show, setShow] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
   const categoriesButtonRef = useRef(null);
+  const cartModalRef = useRef(null);
 
   useEffect(() => {
     const handleOutsideMenuClick = (e: MouseEvent) => {
       if (e.target === categoriesButtonRef.current) return;
-      setShow(false);
+      setShowCategories(false);
     };
 
-    if (show) {
+    if (showCategories) {
       document.addEventListener("click", handleOutsideMenuClick);
     } else {
       document.removeEventListener("click", handleOutsideMenuClick);
     }
-  }, [setShow, show]);
+  }, [setShowCategories, showCategories]);
+
+  const handleCartClick = () => {
+    if(showCartModal && cartModalRef.current){
+      (cartModalRef.current as HTMLElement).classList.add("hide");
+      setTimeout(() => {
+        (cartModalRef.current as unknown as HTMLElement).classList.remove("hide");
+        setShowCartModal(false);
+      }, 300);
+    }else{
+      setShowCartModal(true);
+    }
+  }
 
   return (
     <header className="header">
@@ -53,12 +68,12 @@ const Header = () => {
           <FaRegUserCircle />
           <h4>Mi Cuenta</h4>
         </div>
-        <CartWidget />
+        <CartWidget onClick={handleCartClick}/>
       </div>
 
       <div className="helperTab">
-        <button ref={categoriesButtonRef} className="btnCategories" onClick={() => setShow(prev => !prev)}>
-          { show ? <AiOutlineClose/> : <FaList />} Categorías
+        <button ref={categoriesButtonRef} className="btnCategories" onClick={() => setShowCategories(prev => !prev)}>
+          { showCategories ? <AiOutlineClose/> : <FaList />} Categorías
         </button>
 
         <Link to="/constructor" className="buildLink">
@@ -70,7 +85,8 @@ const Header = () => {
         </button>
       </div>
 
-      <CategoriesMenu show={show} />
+      <CategoriesMenu show={showCategories} />
+      { showCartModal && <CartModal ref={cartModalRef}/>}
     </header>
   );
 };
