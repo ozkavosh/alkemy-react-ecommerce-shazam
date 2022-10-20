@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import './CartModal.scss';
 
 const CartModal = forwardRef<HTMLDivElement>((props, ref) => {

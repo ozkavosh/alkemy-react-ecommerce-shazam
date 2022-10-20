@@ -1,5 +1,5 @@
 import "./Header.scss";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   FaList,
   FaRegCommentDots,
@@ -17,19 +17,7 @@ const Header = () => {
   const [showCartModal, setShowCartModal] = useState(false);
   const categoriesButtonRef = useRef(null);
   const cartModalRef = useRef(null);
-
-  useEffect(() => {
-    const handleOutsideMenuClick = (e: MouseEvent) => {
-      if (e.target === categoriesButtonRef.current) return;
-      setShowCategories(false);
-    };
-
-    if (showCategories) {
-      document.addEventListener("click", handleOutsideMenuClick);
-    } else {
-      document.removeEventListener("click", handleOutsideMenuClick);
-    }
-  }, [setShowCategories, showCategories]);
+  const categoriesMenuRef = useRef(null);
 
   const handleCartClick = () => {
     if(showCartModal && cartModalRef.current){
@@ -42,6 +30,35 @@ const Header = () => {
       setShowCartModal(true);
     }
   }
+
+  const handleCategoriesClick = useCallback(() => {
+    if(showCategories && categoriesMenuRef.current){
+      (categoriesMenuRef.current as HTMLElement).classList.add("hide");
+      setTimeout(() => {
+        (categoriesMenuRef.current as unknown as HTMLElement).classList.remove("hide");
+        setShowCategories(false);
+      }, 300);
+    }else{
+      setShowCategories(true);
+    }
+  }, [showCategories])
+
+  useEffect(() => {
+    const handleOutsideMenuClick = (e: MouseEvent) => {
+      if (e.target === categoriesButtonRef.current) return;
+      handleCategoriesClick();
+    };
+
+    if (showCategories) {
+      document.addEventListener("click", handleOutsideMenuClick);
+    } else {
+      document.removeEventListener("click", handleOutsideMenuClick);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleOutsideMenuClick);
+    }
+  }, [showCategories, handleCategoriesClick]);
 
   return (
     <header className="header">
@@ -72,7 +89,7 @@ const Header = () => {
       </div>
 
       <div className="helperTab">
-        <button ref={categoriesButtonRef} className="btnCategories" onClick={() => setShowCategories(prev => !prev)}>
+        <button ref={categoriesButtonRef} className="btnCategories" onClick={handleCategoriesClick}>
           { showCategories ? <AiOutlineClose/> : <FaList />} Categorías
         </button>
 
@@ -85,7 +102,7 @@ const Header = () => {
         </button>
       </div>
 
-      <CategoriesMenu show={showCategories} />
+      { showCategories && <CategoriesMenu ref={categoriesMenuRef}/>}
       { showCartModal && <CartModal ref={cartModalRef}/>}
     </header>
   );

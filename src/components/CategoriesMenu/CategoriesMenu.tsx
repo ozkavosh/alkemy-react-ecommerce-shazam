@@ -1,13 +1,10 @@
 import "./CategoriesMenu.scss";
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 
-type categoriesMenuProps = {
-  show: Boolean
-};
-
-const CategoriesMenu = ({ show }: categoriesMenuProps) => {
+const CategoriesMenu = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div className={ show ? "categoriesMenu show" : "categoriesMenu hide"}>
+    <div className="categoriesMenu" ref={ref}>
       <Link to="/constructor">Arma tu PC</Link>
       <hr />
       <Link to="/categoria/video">Placas de video</Link>
@@ -21,6 +18,6 @@ const CategoriesMenu = ({ show }: categoriesMenuProps) => {
       <Link to="/marca/nvidia">Nvidia</Link>
     </div>
   );
-};
+});
 
 export default CategoriesMenu;
