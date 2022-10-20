@@ -37,6 +37,7 @@
                 }
 
                 .secondColumn{
+                    box-sizing: border-box;
                     flex: 1;
                     margin-left: auto;
                     display: flex;
@@ -46,6 +47,10 @@
 
                     .productPriceContainer{
                         text-align: center;
+
+                        .productPrice{
+                            font-size: 2em;
+                        }
                     }
 
                     .productInfoContainer{
@@ -63,12 +68,14 @@
                         margin: .5em 0;
                         display: flex;
                         gap: .1em;
+                        color: #fff;
 
                         .btnAddQuantity, .btnRemoveQuantity{
                             background-color: variables.$secondary-color;
                             padding: .5em 1em;
                             border: none;
                             cursor: pointer;
+                            color: #fff;
 
                             &:hover{
                                 background-color: lighten(variables.$secondary-color, 5%);
