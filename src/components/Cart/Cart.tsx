@@ -1,3 +1,5 @@
+import { FaCartPlus } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import CartItem from '../CartItem/CartItem';
 import './Cart.scss';
 
@@ -5,7 +7,7 @@ const Cart = () => {
   return (
     <main className="cart">
         <div className="container">
-            <div className="cartItems">
+            {false ? <><div className="cartItems">
                 <h2>Productos en el carrito</h2>
                 <ul className="cartItemList">
                     {
@@ -29,7 +31,11 @@ const Cart = () => {
                         Continuar
                     </button>
                 </div>
-            </div>
+            </div></> : <div className="emptyCart">
+                    <FaCartPlus/>
+                    <h2>El carrito aún está vacío!</h2>
+                    <Link to="/"><button>Buscar productos</button></Link>
+            </div>}
         </div>
     </main>
   )
