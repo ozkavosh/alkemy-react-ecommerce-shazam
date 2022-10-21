@@ -1,0 +1,75 @@
+@use '../../globals' as variables;
+
+.cart{
+    background-color: lighten(variables.$secondary-color, 20%);
+
+    .container{
+        padding: 2em 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: baseline;
+        gap: 1em;
+
+        .cartItems, .cartResume{
+            box-sizing: border-box;
+            padding: 1em;
+            color: lighten(variables.$secondary-color, 70%);
+            border: 1px solid lighten(variables.$secondary-color, 40%);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+
+            h2{
+                font-weight: 300;
+            }
+        }
+
+        .cartItems{
+            width: 35em;
+            height: 25em;
+            background-color: lighten(variables.$secondary-color, 15%);
+
+            .cartItemList{
+                flex: 1;
+                overflow-y: scroll;
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+            }
+        }
+
+        .cartResume{
+            width: 25em;
+            background-color: lighten(variables.$secondary-color, 15%);
+
+            .cartAmount{
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .cartButtons{
+                width: 100%;
+                display: flex;
+                gap: 1em;
+
+                button{
+                    flex:1;
+                    padding: .5em 0;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    cursor: pointer;
+                    background-color: variables.$main-color;
+                    border: none;
+                    border-radius: 4px;
+                }
+
+                .btnClearCart{
+                    background-color: lighten(red, 20%);
+                    color: white;
+                }
+            }
+        }
+    }
+}

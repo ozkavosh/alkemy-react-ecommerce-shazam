@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import Cart from "../Cart/Cart";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
@@ -13,6 +14,7 @@ const MainNavigation = () => {
       <Route path="/categoria/:category" element={<ProductList/>} />
       <Route path="/marca/:brand" element={<ProductList/>} />
       <Route path="/producto/:id" element={<ProductDetail/>} />
+      <Route path="/carrito" element={<Cart/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/registro" element={<Register />} />
       <Route path="/404/" element={<NotFound/>}/>

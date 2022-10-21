@@ -26,7 +26,7 @@ const Header = () => {
         (cartModalRef.current as unknown as HTMLElement).classList.remove("hide");
         setShowCartModal(false);
       }, 300);
-    }else{
+    }else if(!cartModalRef.current){
       setShowCartModal(true);
     }
   }
@@ -38,7 +38,7 @@ const Header = () => {
         (categoriesMenuRef.current as unknown as HTMLElement).classList.remove("hide");
         setShowCategories(false);
       }, 300);
-    }else{
+    }else if(!categoriesMenuRef.current){
       setShowCategories(true);
     }
   }, [showCategories])
@@ -98,12 +98,12 @@ const Header = () => {
         </Link>
 
         <button className="btnSupport">
-          <FaRegCommentDots /> Chatear con soporte
+          <FaRegCommentDots /> Soporte
         </button>
       </div>
 
       { showCategories && <CategoriesMenu ref={categoriesMenuRef}/>}
-      { showCartModal && <CartModal ref={cartModalRef}/>}
+      { showCartModal && <CartModal onClick={handleCartClick} ref={cartModalRef}/>}
     </header>
   );
 };

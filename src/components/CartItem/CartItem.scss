@@ -1,0 +1,49 @@
+@use '../../globals' as variables;
+
+.cartItem{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: .9em;
+    border-bottom: 1px solid variables.$secondary-color;
+
+    .itemImage{
+        height: 5em;
+        width: 5em;
+        background-color: variables.$secondary-color;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .itemDetails{
+        margin-left: .5em;
+        display: flex;
+        flex-direction: column;
+        gap: .3em;
+
+        .itemName{
+            font-weight: bold;
+        }
+
+        .itemQuantity{
+            font-size: .8em;
+        }
+
+        .itemActions{
+            display: flex;
+            gap: .2em;
+
+            svg{
+                cursor: pointer;
+            }
+        }
+    }
+
+    .itemPrice{
+        margin-left: auto;
+    }
+}
